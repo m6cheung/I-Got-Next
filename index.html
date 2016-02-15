@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8" />
     <title>I Got Next</title>
-    <script src=""
+    <link rel='stylesheet' type='text/css' href='style.css'>
   </head>
+
+  <body>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <h1>I Got Next</h1>
+    <button ng-click='getCourts()'>Find Nearby Courts</button>
+    <div ng-view></div>
+  </body>
 </html>
