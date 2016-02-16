@@ -17,8 +17,9 @@
     <script src="services/service.js"></script>
 
     <h1>I Got Next</h1>
-    <button ng-click='getCourts()'>Find Nearby Courts</button>
-    
+    <button type='submit' ng-submit='getCourts()'><a href='#/courts'>Find Nearby Courts</a></button>
+    <button><a href='#/favorites'>Go To Your Favorite Courts</a></button>
+
     <div ng-view></div>
 
   </body>

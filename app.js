@@ -1,6 +1,7 @@
 angular.module('app', [
   'basketball.requests',
   'fullList',
+  'favoritesList',
   'ngRoute', 
 ])
 
@@ -9,6 +10,10 @@ angular.module('app', [
     .when('/courts', {
       templateUrl: 'fullList/fullList.html',
       controller: 'fullListCtrl'
+    })
+    .when('/favorites', {
+      templateUrl: 'favorites/favorites.html',
+      controller: 'favoritesCtrl'
     })
     .otherwise({redirectTo: '/'});
 })

@@ -9,7 +9,7 @@ var keys = require('./keys.js');
 /* set_parameters: object with params to search
  * callback: callback(error, response, body)
  */
-var request_yelp = function(custom_parameters, callback) {
+module.exports = function(custom_parameters, callback) {
 
   /* The type of request */
   var httpMethod = 'GET';
