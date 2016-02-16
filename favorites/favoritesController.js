@@ -2,8 +2,9 @@
 angular.module('favoritesList', [])
 
 .controller('favoritesCtrl', function($scope, MyYelpAPI) {
-  $scope.favoriteItem = function(item) {
-    console.log('WHAT IS THE ITEM', item);
-    MyYelpAPI.makeFavorite(item);
-  }
+  $scope.favorites = MyYelpAPI.getFavorites()
+    .then(function(faves) {
+      $scope.favorites.items = faves;
+      console.log('THIS IS THE DATA', $scope.favorites.items);
+    });
 });

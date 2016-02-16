@@ -13,7 +13,7 @@ angular.module('basketball.requests', [])
         // console.log('THIS IS THE GET RESPONSE BRO!!!!!', response);
         return response.data;
       }, function(error) {
-        console.error('ERRR DUDE WHAT HAPPENED')
+        console.error('ERRR DUDE WHAT HAPPENED');
       });
     },
     makeFavorite: function(item) {
@@ -21,14 +21,41 @@ angular.module('basketball.requests', [])
       return $http({
         method: 'POST',
         url: '/courts',
-        data: {rec: item.name}
+        data: {name: item.name}
       })
       .then(function(response) {
         console.log('THIS IS THE RESPONSE', response);
-        return response;
+        return response.data;
       }, function(error) {
         console.error('ERROR TRYING TO FAVORITE');
+      });
+    },
+    getFavorites: function() {
+      console.log('GETTING FAVORITES!!!!!');
+      return $http({
+        method:'GET',
+        url: '/favorites'
+      })
+      .then(function(response) {
+        return response.data;
+      }, function(error) {
+        console.log('error WTF HAPPEND DUDE WHYYYYY');
       });
     }
   };
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

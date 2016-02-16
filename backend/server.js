@@ -2,6 +2,8 @@ var express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
 var yelpCall = require('./yelpRequest');
+var mongoose = require('mongoose');
+var db = require('../favoritesSchema');
 app.use(bodyParser.json());
 
 app.use('/favorites', express.static(__dirname.split('/').slice(0,-1).join('/') + '/favorites'));
@@ -9,8 +11,8 @@ app.use('/fullList', express.static(__dirname.split('/').slice(0,-1).join('/') +
 app.use('/node_modules', express.static(__dirname.split('/').slice(0,-1).join('/') +  '/node_modules'));
 app.use('/', express.static(__dirname.split('/').slice(0,-1).join('/')));
 
-//MONGODB 
-var temp = [];
+//MONGODB
+mongoose.connect('mongodb://localhost/iGotNext');
 //ROUTES
 app.route('/').
   options(function (req, res, next) {
@@ -30,9 +32,25 @@ app.get('/courts', function(req, res) {
 });
 
 app.post('/courts', function(req, res) {
-  console.log('IM IN THE POST FOR /FAVORITES', req);
-  res.send(201);
+  console.log('IM IN THE POST FOR /FAVORITES', req.body);
+  db.create({name: req.body.name}, function(err, newCourt) {
+    if(err) {
+      return res.send(404);
+    } else {
+      res.send(201, newCourt);
+    }
+  })
+});
 
+app.get('/favorites', function(req, res) {
+  db.find({},{name:true, _id:false}, function(error, allItems) {
+    if(error) {
+      return res.send(404);
+    } else {
+      console.log('THIS IS ALL ITEMS', allItems);
+      res.send(200, allItems);
+    }
+  });
 });
 
 var port = 3000;
