@@ -15,5 +15,9 @@ angular.module('app', [
       templateUrl: 'favorites/favorites.html',
       controller: 'favoritesCtrl'
     })
+    .when('/indoor', {
+      templateUrl: 'fullList/indoor.html',
+      controller: 'fullListCtrl'
+    })
     .otherwise({redirectTo: '/'});
 })

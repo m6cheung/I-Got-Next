@@ -33,7 +33,14 @@ app.get('/courts', function(req, res) {
 
 app.post('/courts', function(req, res) {
   console.log('IM IN THE POST FOR /FAVORITES', req.body);
-  db.create({name: req.body.name}, function(err, newCourt) {
+  db.collection.insert({
+    name: req.body.name,
+    city: req.body.city,
+    address: req.body.address,
+    state: req.body.state,
+    zip: req.body.zip,
+    phone: req.body.phone
+  }, function(err, newCourt) {
     if(err) {
       return res.send(404);
     } else {
@@ -43,7 +50,15 @@ app.post('/courts', function(req, res) {
 });
 
 app.get('/favorites', function(req, res) {
-  db.find({},{name:true, _id:false}, function(error, allItems) {
+  db.find({},{
+    name:true, 
+    city: true,
+    address: true,
+    state: true,
+    zip: true,
+    phone: true,
+    _id:false
+  }, function(error, allItems) {
     if(error) {
       return res.send(404);
     } else {

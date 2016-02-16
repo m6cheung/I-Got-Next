@@ -1,0 +1,8 @@
+<h1 ng-controller='fullListCtrl'>List of Nearby Basketball Courts in {{cityCourts}}</h1>
+<form>
+  <input class='citySearch' ng-model='cityCourts'>
+  <button ng-click='getListIndoor(cityCourts)'>Search Indoor Courts in {{cityCourts}}</button>
+</form>
+<ul>
+  <li ng-repeat='indoor in getListIndoor.items track by $index' ng-click='putInFavorites(indoor)'>{{indoor.name}} <span class='courtInfo'><br> {{indoor.location.address[0]}} {{indoor.location.city}} {{indoor.location.state_code}} {{indoor.location.postal_code}} <br>Phone Number: <strong>{{indoor.display_phone}}</strong></span></li>
+</ul>

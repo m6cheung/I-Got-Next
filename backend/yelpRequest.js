@@ -17,12 +17,6 @@ module.exports = function(custom_parameters, callback) {
   /* The url we are using for the request */
   var url = 'http://api.yelp.com/v2/search';
 
-  /* We can setup default parameters here */
-  var SF_parameters = {
-    location: 'San+Francisco',
-    sort: '1'
-  };
-
   /* We set the require parameters here */
   var required_parameters = {
     oauth_consumer_key : keys.CONSUMER_KEY,
@@ -34,7 +28,7 @@ module.exports = function(custom_parameters, callback) {
   };
 
   /* We combine all theq parameters in order of importance */ 
-  var parameters = _.assign(SF_parameters, custom_parameters, required_parameters);
+  var parameters = _.assign(custom_parameters, required_parameters);
 
   /* We set our secrets here */
   var consumerSecret = keys.CONSUMER_SECRET;

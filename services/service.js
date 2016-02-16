@@ -2,15 +2,29 @@ angular.module('basketball.requests', [])
 
 .factory("MyYelpAPI", function($http) {
   return {
-    getCourts: function() {
-      // console.log("GETTING THE COURTS");
+    getCourts: function(city) {
+      console.log("GETTING THE COURTS");
       return $http({
         method: 'GET',
         url: '/courts',
-        params: {'category_filter': 'recreation'}
+        params: {category_filter: 'basketballcourts', 'location': city, sort: '1'}
       })
       .then(function(response) {
-        // console.log('THIS IS THE GET RESPONSE BRO!!!!!', response);
+        console.log('THIS IS THE GET RESPONSE BRO!!!!!', response);
+        return response.data;
+      }, function(error) {
+        console.error('ERRR DUDE WHAT HAPPENED');
+      });
+    },
+    getIndoorCourts: function(city) {
+      console.log("GETTING THE COURTS");
+      return $http({
+        method: 'GET',
+        url: '/courts',
+        params: {category_filter: 'recreation', 'location': city, sort: '1'}
+      })
+      .then(function(response) {
+        console.log('THIS IS THE GET RESPONSE BRO!!!!!', response);
         return response.data;
       }, function(error) {
         console.error('ERRR DUDE WHAT HAPPENED');
@@ -21,7 +35,13 @@ angular.module('basketball.requests', [])
       return $http({
         method: 'POST',
         url: '/courts',
-        data: {name: item.name}
+        data: {name: item.name, 
+          city: item.location.city,
+          address: item.location.address[0],
+          state: item.location.state_code,
+          zip: item.location.postal_code,
+          phone: item.display_phone
+        }
       })
       .then(function(response) {
         console.log('THIS IS THE RESPONSE', response);
@@ -41,6 +61,9 @@ angular.module('basketball.requests', [])
       }, function(error) {
         console.log('error WTF HAPPEND DUDE WHYYYYY');
       });
+    },
+    deleteFavorite: function() {
+      
     }
   };
 });

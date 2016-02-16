@@ -1,4 +1,4 @@
-<h1>Favorite Courts</h1>
+<h1 ng-controller='favoritesCtrl'>Favorite Courts</h1>
 <ul>
-  <li ng-repeat='item in favorites.items'>{{item.name}}</li>
+  <li ng-repeat='item in favorites.items'>{{item.name}} <span class='courtInfo'><br> {{item.address}} {{item.city}} {{item.state}} {{item.zip}} <br>Phone Number: <strong>{{item.phone}}</strong></span></li>
 </ul>

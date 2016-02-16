@@ -1,4 +1,8 @@
-<h1>List of Nearby Basketball Courts</h1>
+<h1 ng-controller='fullListCtrl'>List of Nearby Basketball Courts in {{cityCourts}}</h1>
+<form>
+  <input class='citySearch' ng-model='cityCourts'>
+  <button ng-click='getList(cityCourts)'>Search Outdoor Courts in {{cityCourts}}</button>
+</form>
 <ul>
-  <li ng-repeat='court in list.items' ng-click='putInFavorites(court)'>{{court.name}}</li>
+  <li ng-repeat='court in getList.items track by $index' ng-click='putInFavorites(court)'>{{court.name}} <span class='courtInfo'><br> {{court.location.address[0]}} {{court.location.city}} {{court.location.state_code}} {{court.location.postal_code}} <br>Phone Number: <strong>{{court.display_phone}}</strong></span></li>
 </ul>
