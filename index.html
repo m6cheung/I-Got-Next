@@ -7,11 +7,19 @@
     <link rel='stylesheet' type='text/css' href='style.css'>
   </head>
 
-  <body>
+  <body ng-app='app'>
+
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="fullList/fullListController.js"></script>
+    <script src="favorites/favoritesController.js"></script>
+    <script src="services/service.js"></script>
+
     <h1>I Got Next</h1>
     <button ng-click='getCourts()'>Find Nearby Courts</button>
+    
     <div ng-view></div>
+
   </body>
 </html>
