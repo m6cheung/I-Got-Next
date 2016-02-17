@@ -61,11 +61,21 @@ angular.module('basketball.requests', [])
       .then(function(response) {
         return response.data;
       }, function(error) {
-        console.log('error WTF HAPPEND DUDE WHYYYYY');
+        console.log('error WHAT HAPPENED');
       });
     },
-    deleteFavorite: function() {
-
+    deleteFavorite: function(itemName) {
+      console.log('INSIDE DELETE FAVORITE');
+      return $http({
+        method: 'DELETE',
+        url:'/favorites',
+        params: {name: itemName}
+      })
+      .then(function(response) {
+        return response.data;
+      }, function(error) {
+        console.log('ERROR TRYING TO DELETE');
+      });
     }
   };
 });

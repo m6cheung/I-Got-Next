@@ -72,6 +72,18 @@ app.get('/favorites', function(req, res) {
   });
 });
 
+
+app.delete('/favorites', function(req, res) {
+  db.collection.remove({name: req.query.name}, function(error, newItems) {
+    if(error) {
+      return res.send(404);
+    } else {
+      console.log('NEW FAVORITES', newItems);
+      res.send(200, newItems);
+    }
+  })
+})
+
 var port = 3000;
 app.listen(3000, function(){
   console.log("server listening on....", port);
