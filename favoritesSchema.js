@@ -8,7 +8,8 @@ var favoritesSchema = new mongoose.Schema({
   state: String,
   zip: String,
   phone: String,
-  url: String
+  url: String,
+  image: String
 });
 
 module.exports = mongoose.model('favorites', favoritesSchema);

@@ -1,4 +1,26 @@
 <h1 ng-controller='favoritesCtrl'>Favorite Courts</h1>
-<ul>
-  <li ng-repeat='item in favorites.items'>{{item.name}} <span class='courtInfo'><br> {{item.address}} {{item.city}} {{item.state}} {{item.zip}} <br>Phone Number: <strong>{{item.phone}}</strong></span></li>
-</ul>
+<div ng-repeat='item in favorites.items' class='col-sm-3'>
+  <div class='info'>
+    <a target='_blank' href={{court.url}}>
+      {{item.name}}
+    </a>
+    <span class='courtInfo'>
+      <br> 
+      {{item.address}} 
+      {{item.city}} 
+      {{item.state}} 
+      {{item.zip}} 
+      <br>
+      Phone Number: <strong>{{item.phone}}</strong>
+    </span>
+    <br>
+    <div class='btn btn-danger' ng-click='putInFavorites(court)'>Delete From Favorites</div>
+  </div>
+</div>
+
+
+
+
+<!-- <ul>
+  <li ng-repeat='item in favorites.items'><a href={{item.url}}>{{item.name}}</a> <span class='courtInfo'><br> {{item.address}} {{item.city}} {{item.state}} {{item.zip}} <br>Phone Number: <strong>{{item.phone}}</strong></span></li>
+</ul> -->

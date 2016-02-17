@@ -4,7 +4,8 @@
   <head>
     <meta charset="utf-8" />
     <title>I Got Next</title>
-    <link rel='stylesheet' type='text/css' href='style.css'>
+    <link rel='stylesheet' type='text/css' href='node_modules/bootstrap/dist/css/bootstrap.min.css'>
+    <link rel='stylesheet' type='text/css' href='styles/style.css'>
   </head>
 
   <body ng-app='app'>
@@ -16,11 +17,20 @@
     <script src="favorites/favoritesController.js"></script>
     <script src="services/service.js"></script>
 
-    <h1>I Got Next - BasketBall Court Finder</h1>
+    <h2 class='headerTitle'><a href='#/'>I Got Next - BasketBall Court Finder</a></h2>
 
-    <a href='#/courts'><button>Search Outdoor Courts by City</button></a>
+    <ul class='navBar'>
+      <li class='navList'><a href="#/courts">Search Outdoor Parks</a></li>
+      <li class='navList'><a href="#/indoor">Search Indoor Recreation Centers</a></li>
+      <li class='navList'><a href="#/favorites">Favorites</a></li>
+    </ul>
+
+
+
+
+<!--     <a href='#/courts'><button>Search Outdoor Courts by City</button></a>
     <a href='#/indoor'><button>Search Indoor Courts by City</button></a>
-    <a href='#/favorites'><button>Go To Your Favorite Courts</button></a>
+    <a href='#/favorites'><button>Go To Your Favorite Courts</button></a> -->
 
     <div ng-view></div>
 

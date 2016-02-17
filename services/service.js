@@ -40,7 +40,9 @@ angular.module('basketball.requests', [])
           address: item.location.address[0],
           state: item.location.state_code,
           zip: item.location.postal_code,
-          phone: item.display_phone
+          phone: item.display_phone,
+          url: item.url,
+          image: item.image_url
         }
       })
       .then(function(response) {
@@ -63,7 +65,7 @@ angular.module('basketball.requests', [])
       });
     },
     deleteFavorite: function() {
-      
+
     }
   };
 });

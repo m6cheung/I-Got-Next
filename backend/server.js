@@ -39,7 +39,9 @@ app.post('/courts', function(req, res) {
     address: req.body.address,
     state: req.body.state,
     zip: req.body.zip,
-    phone: req.body.phone
+    phone: req.body.phone,
+    url: req.body.url,
+    image: req.body.image
   }, function(err, newCourt) {
     if(err) {
       return res.send(404);
@@ -57,6 +59,8 @@ app.get('/favorites', function(req, res) {
     state: true,
     zip: true,
     phone: true,
+    url: true,
+    image: true,
     _id:false
   }, function(error, allItems) {
     if(error) {

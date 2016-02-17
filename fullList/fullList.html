@@ -1,8 +1,53 @@
 <h1 ng-controller='fullListCtrl'>List of Nearby Basketball Courts in {{cityCourts}}</h1>
 <form>
-  <input class='citySearch' ng-model='cityCourts'>
-  <button ng-click='getList(cityCourts)'>Search Outdoor Courts in {{cityCourts}}</button>
+  <input class='citySearch' ng-model='cityCourts' placeholder='Enter City'>
+  <button class='btn btn-primary' ng-click='getList(cityCourts)'>Search Outdoor Courts</button>
 </form>
-<ul>
-  <li ng-repeat='court in getList.items track by $index' ng-click='putInFavorites(court)'>{{court.name}} <span class='courtInfo'><br> {{court.location.address[0]}} {{court.location.city}} {{court.location.state_code}} {{court.location.postal_code}} <br>Phone Number: <strong>{{court.display_phone}}</strong></span></li>
+
+
+
+<div ng-repeat='court in getList.items track by $index' class='col-sm-3'>
+  <div class='pic'>
+    <a target='_blank' href={{court.url}}>
+      <img ng-src="{{court.image_url || 'http://ep.yimg.com/ay/yhst-135042093248474/golden-state-warriors-logo-pin-4.jpg'}}" />
+    </a>
+  </div>
+  <div class='info'>
+    <a target='_blank' href={{court.url}}>
+      {{court.name}}
+    </a>
+    <span class='courtInfo'>
+      <br> 
+      {{court.location.address[0]}} 
+      {{court.location.city}} 
+      {{court.location.state_code}} 
+      {{court.location.postal_code}} 
+      <br>
+      Phone Number: <strong>{{court.display_phone}}</strong>
+    </span>
+    <br>
+    <div class='btn btn-success' ng-click='putInFavorites(court)'>Add to Favorites</div>
+  </div>
+</div>
+
+
+
+<!-- <div class="col-sm-3"><div class="pic"><a target="_blank" href="' + el.link + '"><img src="' + el.author.picture + '"/></a></div><div class="info"><a target="_blank" href="' + el.link + '">' + el.headline + '</a><br><br>Created by - ' + '<a target="_blank" href="http://freecodecamp.com/' + el.author.username + '">' + el.author.username + '</a><br>Posted on ' + (new Date(el.timePosted)).toDateString() + '</div></div>' -->
+<!-- <ul>
+  <li ng-repeat='court in getList.items track by $index'><a href={{court.url}}>{{court.name}}</a> <button class='btn btn-primary' ng-click='putInFavorites(court)'>Save To Favorites</button> <span class='courtInfo'><br> {{court.location.address[0]}} {{court.location.city}} {{court.location.state_code}} {{court.location.postal_code}} <br>Phone Number: <strong>{{court.display_phone}}</strong></span></li>
 </ul>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
