@@ -5,7 +5,6 @@ angular.module('favoritesList', [])
   $scope.favorites = MyYelpAPI.getFavorites()
     .then(function(faves) {
       $scope.favorites.items = faves;
-      console.log('THIS IS THE DATA', $scope.favorites.items);
     });
 
     $scope.favoritesDelete = function(item) {
@@ -16,7 +15,6 @@ angular.module('favoritesList', [])
             .then(function(faves) {
               $scope.favorites.items = faves
             })
-          console.log('DELETED ITEMS', $scope.favoritesDelete.deleted);
         });
     };
 });

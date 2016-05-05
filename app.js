@@ -21,3 +21,5 @@ angular.module('app', [
     })
     .otherwise({redirectTo: '/'});
 })
+
+//template url starts at the root folder.

@@ -3,17 +3,15 @@ angular.module('basketball.requests', [])
 .factory("MyYelpAPI", function($http) {
   return {
     getCourts: function(city) {
-      console.log("GETTING THE COURTS");
       return $http({
         method: 'GET',
         url: '/courts',
         params: {category_filter: 'basketballcourts', 'location': city, sort: '1'}
       })
       .then(function(response) {
-        console.log('THIS IS THE GET RESPONSE BRO!!!!!', response);
         return response.data;
       }, function(error) {
-        console.error('ERRR DUDE WHAT HAPPENED');
+        console.error('error', error);
       });
     },
     getIndoorCourts: function(city) {
@@ -24,10 +22,9 @@ angular.module('basketball.requests', [])
         params: {category_filter: 'recreation', 'location': city, sort: '1'}
       })
       .then(function(response) {
-        console.log('THIS IS THE GET RESPONSE BRO!!!!!', response);
         return response.data;
       }, function(error) {
-        console.error('ERRR DUDE WHAT HAPPENED');
+        console.error('error', error);
       });
     },
     makeFavorite: function(item) {
@@ -46,14 +43,12 @@ angular.module('basketball.requests', [])
         }
       })
       .then(function(response) {
-        console.log('THIS IS THE RESPONSE', response);
         return response.data;
       }, function(error) {
-        console.error('ERROR TRYING TO FAVORITE');
+        console.error('error', error);
       });
     },
     getFavorites: function() {
-      console.log('GETTING FAVORITES!!!!!');
       return $http({
         method:'GET',
         url: '/favorites'
@@ -61,7 +56,7 @@ angular.module('basketball.requests', [])
       .then(function(response) {
         return response.data;
       }, function(error) {
-        console.log('error WHAT HAPPENED');
+        console.log('error', error);
       });
     },
     deleteFavorite: function(itemName) {
@@ -74,7 +69,7 @@ angular.module('basketball.requests', [])
       .then(function(response) {
         return response.data;
       }, function(error) {
-        console.log('ERROR TRYING TO DELETE');
+        console.log('error', error);
       });
     }
   };

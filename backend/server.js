@@ -24,7 +24,6 @@ app.route('/').
   });
 
 app.get('/courts', function(req, res) {
-  console.log('IM IN THE GET FOR /COURTS');
   yelpCall(req.query, function(err, response, body) {
     body = JSON.parse(body);
     res.send(200, body.businesses);
@@ -32,7 +31,6 @@ app.get('/courts', function(req, res) {
 });
 
 app.post('/courts', function(req, res) {
-  console.log('IM IN THE POST FOR /FAVORITES', req.body);
   db.collection.insert({
     name: req.body.name,
     city: req.body.city,
@@ -66,7 +64,6 @@ app.get('/favorites', function(req, res) {
     if(error) {
       return res.send(404);
     } else {
-      console.log('THIS IS ALL ITEMS', allItems);
       res.send(200, allItems);
     }
   });
@@ -78,7 +75,6 @@ app.delete('/favorites', function(req, res) {
     if(error) {
       return res.send(404);
     } else {
-      console.log('NEW FAVORITES', newItems);
       res.send(200, newItems);
     }
   })
